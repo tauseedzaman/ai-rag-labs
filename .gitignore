@@ -18,6 +18,7 @@ ENV/
 # =========================
 # Environment files
 # =========================
+.notes
 .env
 .env.*
 !.env.example

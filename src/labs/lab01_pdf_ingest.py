@@ -120,6 +120,12 @@ def main():
 
     print("[4/5] Writing to Chroma")
     client = chromadb.PersistentClient(path=chroma_dir)
+
+    # delete exisiting collection
+    try:
+        client.delete_collection(name=collection_name)
+    except Exception:
+        pass
     col = client.get_or_create_collection(name=collection_name)
 
     # Upsert in batches to avoid big memory spikes
@@ -135,7 +141,7 @@ def main():
     print(f"[5/5] Done. Chroma saved at: {chroma_dir} | collection: {collection_name}")
 
     # Quick sanity query
-    q = "What is this document about?"
+    q = "What is BeneSwap?"
     print("\nSanity query:", q)
     q_emb = ollama.embeddings(model=embed_model, prompt=q)["embedding"]
     res = col.query(query_embeddings=[q_emb], n_results=3, include=["documents", "metadatas", "distances"])

@@ -35,6 +35,8 @@ This repo isolates and optimizes each stage step-by-step.
 
 [🧪 Lab 02 – Chunking Strategy Benchmark](lab02.md)
 
+[🧪 Lab 03 – Retrieval Evaluation Harness](lab03.md)
+
 
 # ⚙️ Setup
 
